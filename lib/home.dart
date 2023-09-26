@@ -49,6 +49,37 @@ class HomeBodyPage extends StatelessWidget {
             ),
             borderRadius: const BorderRadius.all(Radius.circular(15))),
           width: 370,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Column(
+                children: [
+                  Text("Pengeluaran bulan lalu"),
+                  Text("Rp 420.000"),
+                  Icon(Icons.add),
+                ],
+              ),
+              Column(
+                children: [
+                  Text("Pengeluaran bulan ini"),
+                  Text("Rp 420.000"),
+                  Icon(Icons.thumb_up),
+                ],
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        Container(
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 236, 236, 236),
+            border: Border.all(
+              color: Colors.red,
+            ),
+            borderRadius: const BorderRadius.all(Radius.circular(15))),
+          width: 370,
           child: Padding(
             padding: const EdgeInsets.only(top: 20,bottom: 20,),
             child: Row(
