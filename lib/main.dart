@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uangku_app/home.dart';
+import 'package:uangku_app/riwayat.dart';
+import 'package:uangku_app/pengaturan.dart';
 
 void main() {
   runApp(const MyApp());
@@ -64,8 +66,8 @@ class _MyHomePageState extends State<MyHomePage> {
         body: TabBarView(
           children: [
             HomeBodyPage(),
-            HomeBodyPage(),
-            HomeBodyPage(),
+            RiwayatBodyPage(),
+            PengaturanPageBody(),
           ]
         ),
         floatingActionButton: FloatingActionButton(
