@@ -1,6 +1,30 @@
 import 'package:flutter/material.dart';
 
 class RiwayatBodyPage extends StatelessWidget {
+  final List<TableRow> tabelRiwayat = [
+    TableRow(
+      children: const [
+        Text("Satu"),
+        Text("Dua"),
+        Text("Tiga"),
+      ]
+    ),
+    TableRow(
+      children: [
+        Text("Satu"),
+        Text("Dua"),
+        Text("Tiga"),
+      ]
+    ),
+    TableRow(
+      children: [
+        Text("Satu"),
+        Text("Dua"),
+        Text("Tiga"),
+      ]
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -16,29 +40,7 @@ class RiwayatBodyPage extends StatelessWidget {
               horizontalInside: BorderSide(width: 1),
               verticalInside: BorderSide(width: 1),
             ),
-            children: [
-              TableRow(
-                children: [
-                  Text("Satu"),
-                  Text("Dua"),
-                  Text("Tiga"),
-                ]
-              ),
-              TableRow(
-                children: [
-                  Text("Satu"),
-                  Text("Dua"),
-                  Text("Tiga"),
-                ]
-              ),
-              TableRow(
-                children: [
-                  Text("Satu"),
-                  Text("Dua"),
-                  Text("Tiga"),
-                ]
-              ),
-            ],
+            children: tabelRiwayat
           ),
         )
       ],

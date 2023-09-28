@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:uangku_app/home.dart';
-import 'package:uangku_app/riwayat.dart';
-import 'package:uangku_app/pengaturan.dart';
+import 'package:uangku_app/pages/home.dart';
+import 'package:uangku_app/pages/riwayat.dart';
+import 'package:uangku_app/pages/pengaturan.dart';
+import 'pages/pemasukan_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -65,13 +66,18 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: TabBarView(
           children: [
-            HomeBodyPage(),
+            HomeBodyPage(uang: 100, pemasukanNow: 100, pengeluaranNow: 100,),
             RiwayatBodyPage(),
             PengaturanPageBody(),
           ]
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {print("Floating Action Button");},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Pemasukan_page()),
+            );
+          },
           tooltip: 'Increment',
           child: const Icon(Icons.add),
         ),
