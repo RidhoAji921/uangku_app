@@ -1,28 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:uangku_app/format_currency.dart';
+
+TableRow riwayatRow(int id, String tanggal, int transaksi, int uang){
+  return TableRow(
+      children: [
+        Center(child: Padding(
+          padding: const EdgeInsets.only(left: 2.0),
+          child: SingleChildScrollView(child: Center(child: Text(NumberFormater.numberFormatter(id))), scrollDirection: Axis.horizontal,),
+        )),
+        Center(child: Text(tanggal)),
+        Padding(
+          padding: const EdgeInsets.only(left: 3),
+          child: Text(CurrencyFormat.convertToIdr(transaksi, 2)),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 3),
+          child: Text(CurrencyFormat.convertToIdr(uang, 2)),
+        ),
+      ]
+  );
+}
 
 class RiwayatBodyPage extends StatelessWidget {
   final List<TableRow> tabelRiwayat = [
     TableRow(
-      children: const [
-        Text("Satu"),
-        Text("Dua"),
-        Text("Tiga"),
-      ]
-    ),
-    TableRow(
       children: [
-        Text("Satu"),
-        Text("Dua"),
-        Text("Tiga"),
+        Center(child: Text("No")),
+        Center(child: Text("Tanggal")),
+        Center(child: Text("Transaksi")),
+        Center(child: Text("Uang")),
       ]
     ),
-    TableRow(
-      children: [
-        Text("Satu"),
-        Text("Dua"),
-        Text("Tiga"),
-      ]
-    ),
+    riwayatRow(1, "69-69-69", 69, 420),
+    riwayatRow(22, "69-69-69", 69, 420),
+    riwayatRow(666, "69-69-69", 69, 420),
+    riwayatRow(4444, "69-69-69", 69, 420),
   ];
 
   @override
@@ -32,6 +44,9 @@ class RiwayatBodyPage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Table(
+            columnWidths: {
+              0: FixedColumnWidth(30)
+            },
             border: const TableBorder(
               top: BorderSide(width: 2),
               right: BorderSide(width: 2),
@@ -40,7 +55,7 @@ class RiwayatBodyPage extends StatelessWidget {
               horizontalInside: BorderSide(width: 1),
               verticalInside: BorderSide(width: 1),
             ),
-            children: tabelRiwayat
+            children: tabelRiwayat,
           ),
         )
       ],
