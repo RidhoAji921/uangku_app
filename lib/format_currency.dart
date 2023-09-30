@@ -10,3 +10,10 @@ class CurrencyFormat {
     return currencyFormatter.format(number);
   }
 }
+
+class NumberFormater {
+  static String numberFormatter(dynamic number) {
+    var formatter = NumberFormat("#,##0");
+    return formatter.format(number);
+  }
+}
