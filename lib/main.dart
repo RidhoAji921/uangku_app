@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 222, 111, 43)),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 153, 215, 153)),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'uangku'),
@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text(widget.title, style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
           bottom: TabBar(
-            indicatorColor: Colors.deepOrange,
+            indicatorColor: Color.fromARGB(255, 73, 168, 73),
             indicatorSize: TabBarIndicatorSize.tab,
             indicatorWeight: 3,
             tabs: tabs,
