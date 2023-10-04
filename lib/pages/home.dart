@@ -3,13 +3,19 @@ import './pemasukan_page.dart';
 import 'package:uangku_app/format_currency.dart';
 
 // ignore: must_be_immutable
-class HomeBodyPage extends StatelessWidget {
+class HomeBodyPage extends StatefulWidget {
   HomeBodyPage({super.key, required this.uang, required this.pemasukanNow, required this.pengeluaranNow});
   final double uang;
   final double pemasukanNow;
   final double pengeluaranNow;
 
+  @override
+  State<HomeBodyPage> createState() => _HomeBodyPageState();
+}
+
+class _HomeBodyPageState extends State<HomeBodyPage> {
   Color borderColor = const Color.fromARGB(255, 53, 53, 53);
+
   Color tabColor = const Color.fromARGB(255, 250, 250, 250);
 
   @override
@@ -38,7 +44,7 @@ class HomeBodyPage extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: 0, left: 10),
                 child: Text(
-                  '${CurrencyFormat.convertToIdr(uang, 2)}',
+                  '${CurrencyFormat.convertToIdr(widget.uang, 2)}',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
                 ),
               ),
@@ -57,7 +63,7 @@ class HomeBodyPage extends StatelessWidget {
                           ]
                         )
                       ),
-                      Text("${CurrencyFormat.convertToIdr(pemasukanNow, 2)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+                      Text("${CurrencyFormat.convertToIdr(widget.pemasukanNow, 2)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
                     ]
                   ),
                   Column(
@@ -72,7 +78,7 @@ class HomeBodyPage extends StatelessWidget {
                           ]
                         )
                       ),
-                      Text("${CurrencyFormat.convertToIdr(pengeluaranNow, 2)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+                      Text("${CurrencyFormat.convertToIdr(widget.pengeluaranNow, 2)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
                     ]
                   ),
                 ],

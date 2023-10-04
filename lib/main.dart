@@ -8,6 +8,10 @@ void main() {
   runApp(const MyApp());
 }
 
+double uang = 0;
+double pemasukan = 0;
+double pengeluaran = 0;
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -66,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: TabBarView(
           children: [
-            HomeBodyPage(uang: 100, pemasukanNow: 100, pengeluaranNow: 100,),
+            HomeBodyPage(uang: uang, pemasukanNow: pemasukan, pengeluaranNow: pengeluaran,),
             RiwayatBodyPage(),
             PengaturanPageBody(),
           ]
