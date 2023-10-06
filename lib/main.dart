@@ -7,11 +7,6 @@ import 'pages/pemasukan_page.dart';
 void main() {
   runApp(const MyApp());
 }
-
-double uang = 0;
-double pemasukan = 0;
-double pengeluaran = 0;
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -38,6 +33,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  double uang = 0;
+  double pemasukan = 0;
+  double pengeluaran = 0;
+
+  void AddUang(double uang) {
+    this.uang = this.uang + uang;
+    print("Uang ditambahkan menjadi: ${this.uang}");
+  }
+
   List<Tab> tabs = [
     const Tab(
       icon: Icon(Icons.home),
@@ -79,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Pemasukan_page()),
+              MaterialPageRoute(builder: (context) => Pemasukan_page(addUang: AddUang,)),
             );
           },
           tooltip: 'Increment',

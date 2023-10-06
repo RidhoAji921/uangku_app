@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Pemasukan_page extends StatelessWidget {
+  Pemasukan_page({super.key, required this.addUang});
+
+  final Function(double) addUang;
   final pemasukanController = TextEditingController();
 
   Widget build(BuildContext context) {
@@ -22,7 +25,7 @@ class Pemasukan_page extends StatelessWidget {
       ]),
       bottomNavigationBar: BottomAppBar(
         child: ElevatedButton(
-          onPressed: () {print("Menambahkan uang ${pemasukanController.text}");}, child: Text("Proses", style: TextStyle(fontSize: 30),),
+          onPressed: () {addUang(double.parse(pemasukanController.text));}, child: Text("Proses", style: TextStyle(fontSize: 30),),
         ),
       )
     );
