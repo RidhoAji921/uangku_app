@@ -39,7 +39,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void AddUang(double uang) {
     this.uang = this.uang + uang;
-    print("Uang ditambahkan menjadi: ${this.uang}");
+    print("Uang ditambahkan $uang menjadi ${this.uang}");
+  }
+
+  void MinUang(double uang) {
+    this.uang = this.uang - uang;
+    print("Uang dikurangi $uang menjadi ${this.uang}");
   }
 
   List<Tab> tabs = [
@@ -74,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: TabBarView(
           children: [
-            HomeBodyPage(uang: uang, pemasukanNow: pemasukan, pengeluaranNow: pengeluaran,),
+            HomeBodyPage(uang: uang, pemasukanNow: pemasukan, pengeluaranNow: pengeluaran, AddUang: AddUang, MinUang: MinUang,),
             RiwayatBodyPage(),
             PengaturanPageBody(),
           ]

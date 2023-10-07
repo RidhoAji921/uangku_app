@@ -4,10 +4,12 @@ import 'package:uangku_app/format_currency.dart';
 
 // ignore: must_be_immutable
 class HomeBodyPage extends StatefulWidget {
-  HomeBodyPage({super.key, required this.uang, required this.pemasukanNow, required this.pengeluaranNow});
+  HomeBodyPage({super.key, required this.uang, required this.pemasukanNow, required this.pengeluaranNow, required this.AddUang, required this.MinUang});
   final double uang;
   final double pemasukanNow;
   final double pengeluaranNow;
+  final Function(double) AddUang;
+  final Function(double) MinUang;
 
   @override
   State<HomeBodyPage> createState() => _HomeBodyPageState();
