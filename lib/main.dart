@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:uangku_app/pages/home.dart';
 import 'package:uangku_app/pages/riwayat.dart';
 import 'package:uangku_app/pages/pengaturan.dart';
-import 'pages/pemasukan_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -83,16 +82,6 @@ class _MyHomePageState extends State<MyHomePage> {
             RiwayatBodyPage(),
             PengaturanPageBody(),
           ]
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Pemasukan_page(tambahUang: TambahUang,)),
-            );
-          },
-          tooltip: 'Increment',
-          child: const Icon(Icons.add),
         ),
       ),
     );
