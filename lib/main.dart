@@ -37,12 +37,12 @@ class _MyHomePageState extends State<MyHomePage> {
   double pemasukan = 0;
   double pengeluaran = 0;
 
-  void AddUang(double uang) {
+  void TambahUang(double uang) {
     this.uang = this.uang + uang;
     print("Uang ditambahkan $uang menjadi ${this.uang}");
   }
 
-  void MinUang(double uang) {
+  void KurangUang(double uang) {
     this.uang = this.uang - uang;
     print("Uang dikurangi $uang menjadi ${this.uang}");
   }
@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: TabBarView(
           children: [
-            HomeBodyPage(uang: uang, pemasukanNow: pemasukan, pengeluaranNow: pengeluaran, AddUang: AddUang, MinUang: MinUang,),
+            HomeBodyPage(uang: uang, pemasukanNow: pemasukan, pengeluaranNow: pengeluaran, tambahUang: TambahUang, kurangUang: KurangUang,),
             RiwayatBodyPage(),
             PengaturanPageBody(),
           ]
@@ -88,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Pemasukan_page(addUang: AddUang,)),
+              MaterialPageRoute(builder: (context) => Pemasukan_page(tambahUang: TambahUang,)),
             );
           },
           tooltip: 'Increment',

@@ -4,12 +4,12 @@ import 'package:uangku_app/format_currency.dart';
 
 // ignore: must_be_immutable
 class HomeBodyPage extends StatefulWidget {
-  HomeBodyPage({super.key, required this.uang, required this.pemasukanNow, required this.pengeluaranNow, required this.AddUang, required this.MinUang});
+  HomeBodyPage({super.key, required this.uang, required this.pemasukanNow, required this.pengeluaranNow, required this.tambahUang, required this.kurangUang});
   final double uang;
   final double pemasukanNow;
   final double pengeluaranNow;
-  final Function(double) AddUang;
-  final Function(double) MinUang;
+  final Function(double) tambahUang;
+  final Function(double) kurangUang;
 
   @override
   State<HomeBodyPage> createState() => _HomeBodyPageState();
@@ -108,7 +108,7 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Pemasukan_page(addUang: (double uang) {})),
+                      MaterialPageRoute(builder: (context) => Pemasukan_page(tambahUang: (double uang) {})),
                     );
                   },
                   child: const Column(
