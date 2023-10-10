@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import './pemasukan_page.dart';
 import 'package:uangku_app/format_currency.dart';
+import 'package:uangku_app/uang.dart';
 
 // ignore: must_be_immutable
 class HomeBodyPage extends StatefulWidget {
-  HomeBodyPage({super.key, required this.uang, required this.pemasukanNow, required this.pengeluaranNow, required this.tambahUang, required this.kurangUang});
-  final double uang;
-  final double pemasukanNow;
-  final double pengeluaranNow;
-  final Function(double) tambahUang;
-  final Function(double) kurangUang;
+  HomeBodyPage({super.key, required this.uang});
+  Uang uang;
 
   @override
   State<HomeBodyPage> createState() => _HomeBodyPageState();
@@ -39,7 +36,7 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(top: 5, left: 10),
                 child: Text("Uangku", style: TextStyle(fontWeight: FontWeight.w600),),
               ),
@@ -58,14 +55,14 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [ 
                       RichText(
-                        text: TextSpan(
+                        text: const TextSpan(
                           children: [
                             TextSpan(text: "Pemasukkan", style: TextStyle(color: Colors.green, fontSize: 20, fontWeight: FontWeight.w600)),
                             WidgetSpan(child: Icon(Icons.add, color: Colors.green, size: 20,))
                           ]
                         )
                       ),
-                      Text("${CurrencyFormat.convertToIdr(widget.pemasukanNow, 2)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+                      Text("${CurrencyFormat.convertToIdr(widget.uang.getPemasukan(), 2)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
                     ]
                   ),
                   Column(
@@ -73,14 +70,14 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [ 
                       RichText(
-                        text: TextSpan(
+                        text: const TextSpan(
                           children: [
                             TextSpan(text: "Pengeluaran", style: TextStyle(color: Colors.red, fontSize: 20, fontWeight: FontWeight.w600)),
                             WidgetSpan(child: Icon(Icons.remove, color: Colors.red, size: 20,))
                           ]
                         )
                       ),
-                      Text("${CurrencyFormat.convertToIdr(widget.pengeluaranNow, 2)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+                      Text("${CurrencyFormat.convertToIdr(widget.uang.getPengeluaran(), 2)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
                     ]
                   ),
                 ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:uangku_app/pages/home.dart';
 import 'package:uangku_app/pages/riwayat.dart';
 import 'package:uangku_app/pages/pengaturan.dart';
+import 'uang.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,19 +33,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  double uang = 0;
-  double pemasukan = 0;
-  double pengeluaran = 0;
-
-  void TambahUang(double uang) {
-    this.uang = this.uang + uang;
-    print("Uang ditambahkan $uang menjadi ${this.uang}");
-  }
-
-  void KurangUang(double uang) {
-    this.uang = this.uang - uang;
-    print("Uang dikurangi $uang menjadi ${this.uang}");
-  }
+  Uang uang = Uang(1000);
 
   List<Tab> tabs = [
     const Tab(
@@ -78,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: TabBarView(
           children: [
-            HomeBodyPage(uang: uang, pemasukanNow: pemasukan, pengeluaranNow: pengeluaran, tambahUang: TambahUang, kurangUang: KurangUang,),
+            HomeBodyPage(uang: uang),
             RiwayatBodyPage(),
             PengaturanPageBody(),
           ]
