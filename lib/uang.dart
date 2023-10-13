@@ -2,8 +2,13 @@ class Uang{
   double uang = 0;
   double pengeluaran = 0;
   double pemasukan = 0;
+  bool isNegative = false;
 
-  Uang(this.uang);
+  double abs(){
+    return 0;
+  }
+
+  Uang({required this.uang});
 
   double getUang(){
     return uang;
@@ -20,6 +25,7 @@ class Uang{
   void tambahUang(double uang){
     this.uang = this.uang + uang;
     pemasukan = pemasukan + uang;
+    print("Pemasukan: $pemasukan\nUang: ${this.uang}");
   }
 
   void kurangUang(double uang){

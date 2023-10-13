@@ -9,13 +9,24 @@ class HomeBodyPage extends StatefulWidget {
   Uang uang;
 
   @override
-  State<HomeBodyPage> createState() => _HomeBodyPageState();
+  State<HomeBodyPage> createState() => _HomeBodyPageState(uang);
 }
 
 class _HomeBodyPageState extends State<HomeBodyPage> {
-  Color borderColor = const Color.fromARGB(255, 53, 53, 53);
+  Uang uangObj;
 
+  _HomeBodyPageState(this.uangObj);
+  
+  double uangDisplay = 0;
+  Color borderColor = const Color.fromARGB(255, 53, 53, 53);
   Color tabColor = const Color.fromARGB(255, 250, 250, 250);
+
+  void tambahUangState(double uang){
+    uangObj.tambahUang(uang);
+    setState(() {
+      uangDisplay = uangObj.getUang();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +54,7 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
               Padding(
                 padding: EdgeInsets.only(top: 0, left: 10),
                 child: Text(
-                  '${CurrencyFormat.convertToIdr(widget.uang, 2)}',
+                  '${CurrencyFormat.convertToIdr(uangObj.uang, 2)}',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
                 ),
               ),
@@ -62,7 +73,7 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
                           ]
                         )
                       ),
-                      Text("${CurrencyFormat.convertToIdr(widget.uang.getPemasukan(), 2)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+                      Text("${CurrencyFormat.convertToIdr(uangObj.getPemasukan(), 2)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
                     ]
                   ),
                   Column(
@@ -77,7 +88,7 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
                           ]
                         )
                       ),
-                      Text("${CurrencyFormat.convertToIdr(widget.uang.getPengeluaran(), 2)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+                      Text("${CurrencyFormat.convertToIdr(uangObj.getPengeluaran(), 2)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
                     ]
                   ),
                 ],
@@ -105,7 +116,7 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Pemasukan_page(tambahUang: (double uang) {})),
+                      MaterialPageRoute(builder: (context) => Pemasukan_page(tambahUang: uangObj.tambahUang)),
                     );
                   },
                   child: const Column(

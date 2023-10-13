@@ -33,7 +33,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Uang uang = Uang(1000);
+  Uang uang = Uang(uang: 1000);
 
   List<Tab> tabs = [
     const Tab(
