@@ -54,7 +54,7 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
               Padding(
                 padding: EdgeInsets.only(top: 0, left: 10),
                 child: Text(
-                  '${CurrencyFormat.convertToIdr(uangObj.uang, 2)}',
+                  CurrencyFormat.convertToIdr(uangObj.uang, 2),
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
                 ),
               ),
