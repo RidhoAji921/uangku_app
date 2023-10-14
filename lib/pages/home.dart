@@ -116,7 +116,7 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Pemasukan_page(tambahUang: uangObj.tambahUang)),
+                      MaterialPageRoute(builder: (context) => Pemasukan_page(tambahUang: tambahUangState)),
                     );
                   },
                   child: const Column(

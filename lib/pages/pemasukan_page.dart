@@ -25,7 +25,11 @@ class Pemasukan_page extends StatelessWidget {
       ]),
       bottomNavigationBar: BottomAppBar(
         child: ElevatedButton(
-          onPressed: () {tambahUang(double.parse(pemasukanController.text));}, child: Text("Proses", style: TextStyle(fontSize: 30),),
+          onPressed: () {
+            tambahUang(double.parse(pemasukanController.text));
+            Navigator.pop(context);
+            },
+            child: Text("Proses", style: TextStyle(fontSize: 30),),
         ),
       )
     );
