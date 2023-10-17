@@ -25,7 +25,6 @@ class Uang{
   void tambahUang(double uang){
     this.uang = this.uang + uang;
     pemasukan = pemasukan + uang;
-    print("Pemasukan: $pemasukan\nUang: ${this.uang}");
   }
 
   void kurangUang(double uang){

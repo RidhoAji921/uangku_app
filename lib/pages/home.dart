@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './pemasukan_page.dart';
+import './pengeluaran_page.dart';
 import 'package:uangku_app/format_currency.dart';
 import 'package:uangku_app/uang.dart';
 
@@ -23,6 +24,13 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
 
   void tambahUangState(double uang){
     uangObj.tambahUang(uang);
+    setState(() {
+      uangDisplay = uangObj.getUang();
+    });
+  }
+
+  void kurangUangState(double uang){
+    uangObj.kurangUang(uang);
     setState(() {
       uangDisplay = uangObj.getUang();
     });
@@ -54,7 +62,7 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
               Padding(
                 padding: EdgeInsets.only(top: 0, left: 10),
                 child: Text(
-                  CurrencyFormat.convertToIdr(uangObj.uang, 2),
+                  CurrencyFormat.convertToIdr(uangObj.uang, 0),
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
                 ),
               ),
@@ -73,7 +81,7 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
                           ]
                         )
                       ),
-                      Text("${CurrencyFormat.convertToIdr(uangObj.getPemasukan(), 2)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+                      Text("${CurrencyFormat.convertToIdr(uangObj.getPemasukan(), 0)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
                     ]
                   ),
                   Column(
@@ -88,7 +96,7 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
                           ]
                         )
                       ),
-                      Text("${CurrencyFormat.convertToIdr(uangObj.getPengeluaran(), 2)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+                      Text("${CurrencyFormat.convertToIdr(uangObj.getPengeluaran(), 0)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
                     ]
                   ),
                 ],
@@ -127,7 +135,12 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
                   )
                 ),
                 OutlinedButton(
-                  onPressed: () {print("Pengeluaran");},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Pengeluaran_page(kurangUang: kurangUangState)),
+                    );
+                  },
                   child: const Column(
                     children: [
                       Icon(Icons.remove, size: 40,),
