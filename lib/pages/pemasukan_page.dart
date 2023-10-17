@@ -33,7 +33,7 @@ class Pemasukan_page extends StatelessWidget {
       bottomNavigationBar: BottomAppBar(
         child: ElevatedButton(
           onPressed: () {
-            String text = pemasukanController.text.replaceAll(new RegExp(r'[^0-9]'),'');
+            String text = pemasukanController.text.replaceAll(RegExp(r'[^0-9]'),'');
             tambahUang(double.parse(text));
             Navigator.pop(context);
             },
