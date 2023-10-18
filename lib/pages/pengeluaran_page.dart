@@ -21,7 +21,7 @@ class Pengeluaran_page extends StatelessWidget {
               controller: pengeluaranController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Rp 999.999.999.999,99',
+                labelText: 'Rp 999.999.999.999',
               ),
               keyboardType: TextInputType.number,
               inputFormatters: [CurrencyTextInputFormatter(

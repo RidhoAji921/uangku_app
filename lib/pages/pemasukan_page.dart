@@ -19,7 +19,7 @@ class Pemasukan_page extends StatelessWidget {
             controller: pemasukanController,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
-              labelText: 'Rp 999.999.999.999,99',
+              labelText: 'Rp 999.999.999.999',
             ),
             keyboardType: TextInputType.number,
             inputFormatters: [CurrencyTextInputFormatter(
