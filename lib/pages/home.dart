@@ -100,6 +100,9 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
                     ]
                   ),
                 ],
+              ),
+              const Center(
+                child: Text("Bulan September"),
               )
             ],
           ),
