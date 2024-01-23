@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import './pemasukan_page.dart';
 import './pengeluaran_page.dart';
-import 'package:uangku_app/format_currency.dart';
-import 'package:uangku_app/uang.dart';
+import 'package:uangku_app/classes/format_currency.dart';
+import 'package:uangku_app/classes/uang.dart';
 
 // ignore: must_be_immutable
 class HomeBodyPage extends StatefulWidget {

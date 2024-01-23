@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:uangku_app/pages/home.dart';
 import 'package:uangku_app/pages/riwayat.dart';
 import 'package:uangku_app/pages/pengaturan.dart';
-import 'uang.dart';
+import 'classes/uang.dart';
 
 void main() {
   runApp(const MyApp());

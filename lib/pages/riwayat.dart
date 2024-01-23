@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uangku_app/format_currency.dart';
+import 'package:uangku_app/classes/format_currency.dart';
 
 TableRow riwayatRow(int id, String tanggal, int transaksi, int uang){
   return TableRow(
