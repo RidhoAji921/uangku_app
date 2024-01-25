@@ -1,4 +1,8 @@
-class Uang{
+abstract class UangState{}
+
+class Uang extends UangState{
+  Uang({required this.uang, required this.pemasukan, required this.pengeluaran});
+
   double uang = 0;
   double pengeluaran = 0;
   double pemasukan = 0;
@@ -7,8 +11,6 @@ class Uang{
   double abs(){
     return 0;
   }
-
-  Uang({required this.uang});
 
   double getUang(){
     return uang;

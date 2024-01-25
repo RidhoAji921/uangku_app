@@ -1,25 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uangku_app/pages/home.dart';
 import 'package:uangku_app/pages/riwayat.dart';
 import 'package:uangku_app/pages/pengaturan.dart';
+import 'package:uangku_app/providers/provider_uang.dart';
+import 'package:uangku_app/providers/provider_theme.dart';
 import 'classes/uang.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+  final Uang uang = Uang(uang: 0, pengeluaran: 0, pemasukan: 0);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 153, 215, 153)),
-        useMaterial3: true,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => UangBloc(uang)),
+        BlocProvider(create: (context) => DarkTheme()),
+      ],
+      child: BlocBuilder<DarkTheme, bool>(
+        builder: (context, isDark) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter Demo',
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 153, 215, 153)),
+            ),
+            darkTheme: ThemeData(
+              brightness: Brightness.dark,
+              colorScheme: ColorScheme.dark().copyWith(primary: Color.fromARGB(255, 178, 235, 178))
+            ),
+            themeMode: isDark? ThemeMode.dark : ThemeMode.light,
+            home: const MyHomePage(title: 'uangku'),
+          );
+        }
       ),
-      home: const MyHomePage(title: 'uangku'),
     );
   }
 }
@@ -33,8 +51,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Uang uang = Uang(uang: 0);
-
   List<Tab> tabs = [
     const Tab(
       icon: Icon(Icons.home),
@@ -67,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: TabBarView(
           children: [
-            HomeBodyPage(uang: uang),
+            HomeBodyPage(),
             RiwayatBodyPage(),
             PengaturanPageBody(),
           ]

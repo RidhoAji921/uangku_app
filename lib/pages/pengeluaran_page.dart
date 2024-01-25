@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:uangku_app/providers/provider_uang.dart';
 
 class Pengeluaran_page extends StatelessWidget {
-  Pengeluaran_page({super.key, required this.kurangUang});
+  Pengeluaran_page({super.key});
 
-  final Function(double) kurangUang;
   final pengeluaranController = TextEditingController();
 
   Widget build(BuildContext context){
@@ -37,7 +38,7 @@ class Pengeluaran_page extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () {
             String text = pengeluaranController.text.replaceAll(RegExp(r'[^0-9]'),'');
-            kurangUang(double.parse(text));
+            context.read<UangBloc>().pengeluaran(double.parse(text));
             Navigator.pop(context);
           },
           child: const Text("Proses", style: TextStyle(fontSize: 30),),

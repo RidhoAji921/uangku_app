@@ -1,40 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:uangku_app/classes/uang.dart';
 import './pemasukan_page.dart';
 import './pengeluaran_page.dart';
 import 'package:uangku_app/classes/format_currency.dart';
-import 'package:uangku_app/classes/uang.dart';
+import 'package:uangku_app/providers/provider_uang.dart';
 
 // ignore: must_be_immutable
 class HomeBodyPage extends StatefulWidget {
-  HomeBodyPage({super.key, required this.uang});
-  Uang uang;
+  HomeBodyPage({super.key});
 
   @override
-  State<HomeBodyPage> createState() => _HomeBodyPageState(uang);
+  State<HomeBodyPage> createState() => _HomeBodyPageState();
 }
 
 class _HomeBodyPageState extends State<HomeBodyPage> {
-  Uang uangObj;
 
-  _HomeBodyPageState(this.uangObj);
+  _HomeBodyPageState();
   
   double uangDisplay = 0;
   Color borderColor = const Color.fromARGB(255, 53, 53, 53);
-  Color tabColor = const Color.fromARGB(255, 250, 250, 250);
-
-  void tambahUangState(double uang){
-    uangObj.tambahUang(uang);
-    setState(() {
-      uangDisplay = uangObj.getUang();
-    });
-  }
-
-  void kurangUangState(double uang){
-    uangObj.kurangUang(uang);
-    setState(() {
-      uangDisplay = uangObj.getUang();
-    });
-  }
+  Color tabColor = const Color.fromARGB(0, 250, 250, 250);
 
   @override
   Widget build(BuildContext context) {
@@ -61,9 +47,13 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
               ),
               Padding(
                 padding: EdgeInsets.only(top: 0, left: 10),
-                child: Text(
-                  CurrencyFormat.convertToIdr(uangObj.uang, 0),
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
+                child: BlocBuilder<UangBloc, Uang>(
+                  builder: (context, value){
+                    return Text(
+                    CurrencyFormat.convertToIdr(value.uang, 0),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
+                  );
+                  }
                 ),
               ),
               Row(
@@ -81,7 +71,11 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
                           ]
                         )
                       ),
-                      Text("${CurrencyFormat.convertToIdr(uangObj.getPemasukan(), 0)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+                      BlocBuilder<UangBloc, Uang>(
+                        builder: (context, value){
+                         return Text("${CurrencyFormat.convertToIdr(value.pemasukan, 0)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700));
+                        }
+                      )
                     ]
                   ),
                   Column(
@@ -96,7 +90,11 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
                           ]
                         )
                       ),
-                      Text("${CurrencyFormat.convertToIdr(uangObj.getPengeluaran(), 0)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+                      BlocBuilder<UangBloc, Uang>(
+                        builder: (context, value){
+                         return Text("${CurrencyFormat.convertToIdr(value.pengeluaran, 0)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700));
+                        }
+                      )
                     ]
                   ),
                 ],
@@ -127,7 +125,7 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Pemasukan_page(tambahUang: tambahUangState)),
+                      MaterialPageRoute(builder: (context) => Pemasukan_page()),
                     );
                   },
                   child: const Column(
@@ -141,7 +139,7 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Pengeluaran_page(kurangUang: kurangUangState)),
+                      MaterialPageRoute(builder: (context) => Pengeluaran_page()),
                     );
                   },
                   child: const Column(

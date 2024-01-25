@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:uangku_app/providers/provider_theme.dart';
 
 class PengaturanPageBody extends StatefulWidget{
 
@@ -24,24 +26,13 @@ class _PengaturanPageBodyState extends State<PengaturanPageBody> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Aktifkan anu"),
-              Switch(value: pengaturan, onChanged: stateUpdate)
+              Text("Dark Mode"),
+              Switch(value: pengaturan, onChanged: (value) {
+                stateUpdate(value);
+                context.read<DarkTheme>().changeTheme();
+                })
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Aktifkan anu"),
-              Switch(value: pengaturan, onChanged: stateUpdate)
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Aktifkan anu"),
-              Switch(value: pengaturan, onChanged: stateUpdate)
-            ],
-          )
         ],
       ),
     );
