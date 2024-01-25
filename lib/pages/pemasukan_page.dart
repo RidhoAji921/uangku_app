@@ -35,7 +35,8 @@ class Pemasukan_page extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () {
             String text = pemasukanController.text.replaceAll(RegExp(r'[^0-9]'),'');
-            context.read<UangBloc>().pemasukkan(double.parse(text));
+            context.read<PemasukkanBloc>().pemasukkan(double.parse(text));
+            context.read<UangBloc>().tambahUang(double.parse(text));
             Navigator.pop(context);
             },
             child: Text("Proses", style: TextStyle(fontSize: 30),),

@@ -1,25 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uangku_app/classes/uang.dart';
+// import 'package:uangku_app/classes/uang.dart';
 import './pemasukan_page.dart';
 import './pengeluaran_page.dart';
 import 'package:uangku_app/classes/format_currency.dart';
 import 'package:uangku_app/providers/provider_uang.dart';
 
 // ignore: must_be_immutable
-class HomeBodyPage extends StatefulWidget {
+class HomeBodyPage extends StatelessWidget {
   HomeBodyPage({super.key});
 
-  @override
-  State<HomeBodyPage> createState() => _HomeBodyPageState();
-}
-
-class _HomeBodyPageState extends State<HomeBodyPage> {
-
-  _HomeBodyPageState();
-  
-  double uangDisplay = 0;
   Color borderColor = const Color.fromARGB(255, 53, 53, 53);
+
   Color tabColor = const Color.fromARGB(0, 250, 250, 250);
 
   @override
@@ -47,10 +39,11 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
               ),
               Padding(
                 padding: EdgeInsets.only(top: 0, left: 10),
-                child: BlocBuilder<UangBloc, Uang>(
+                child: BlocBuilder<UangBloc, double>(
                   builder: (context, value){
+                    print("value: ${value}");
                     return Text(
-                    CurrencyFormat.convertToIdr(value.uang, 0),
+                    CurrencyFormat.convertToIdr(value, 0),
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
                   );
                   }
@@ -71,9 +64,9 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
                           ]
                         )
                       ),
-                      BlocBuilder<UangBloc, Uang>(
+                      BlocBuilder<PemasukkanBloc, double>(
                         builder: (context, value){
-                         return Text("${CurrencyFormat.convertToIdr(value.pemasukan, 0)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700));
+                         return Text("${CurrencyFormat.convertToIdr(value, 0)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700));
                         }
                       )
                     ]
@@ -90,9 +83,9 @@ class _HomeBodyPageState extends State<HomeBodyPage> {
                           ]
                         )
                       ),
-                      BlocBuilder<UangBloc, Uang>(
+                      BlocBuilder<PengeluaranBloc, double>(
                         builder: (context, value){
-                         return Text("${CurrencyFormat.convertToIdr(value.pengeluaran, 0)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700));
+                         return Text("${CurrencyFormat.convertToIdr(value, 0)}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700));
                         }
                       )
                     ]

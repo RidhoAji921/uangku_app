@@ -18,7 +18,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => UangBloc(uang)),
+        BlocProvider(create: (context) => UangBloc(0)),
+        BlocProvider(create: (context) => PemasukkanBloc(0)),
+        BlocProvider(create: (context) => PengeluaranBloc(0)),
         BlocProvider(create: (context) => DarkTheme()),
       ],
       child: BlocBuilder<DarkTheme, bool>(

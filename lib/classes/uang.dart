@@ -1,6 +1,7 @@
-abstract class UangState{}
+import 'package:equatable/equatable.dart';
 
-class Uang extends UangState{
+// ignore: must_be_immutable
+class Uang extends Equatable{
   Uang({required this.uang, required this.pemasukan, required this.pengeluaran});
 
   double uang = 0;
@@ -33,4 +34,7 @@ class Uang extends UangState{
     this.uang = this.uang - uang;
     pengeluaran = pengeluaran + uang;
   }
+
+  @override
+  List<Object?> get props => [this.uang, this.pengeluaran, this.pemasukan];
 }

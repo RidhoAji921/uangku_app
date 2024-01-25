@@ -38,7 +38,8 @@ class Pengeluaran_page extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () {
             String text = pengeluaranController.text.replaceAll(RegExp(r'[^0-9]'),'');
-            context.read<UangBloc>().pengeluaran(double.parse(text));
+            context.read<PengeluaranBloc>().pengeluaran(double.parse(text));
+            context.read<UangBloc>().tambahUang(double.parse(text) * -1);
             Navigator.pop(context);
           },
           child: const Text("Proses", style: TextStyle(fontSize: 30),),
